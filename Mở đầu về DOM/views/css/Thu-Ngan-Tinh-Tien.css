@@ -1,0 +1,53 @@
+#Khu-vuc-tinh-tien{
+    padding-top: 35vh;
+}
+#Div-Ma-San-Pham{
+    display: block;
+    width: 30vw;
+    height: 30vw;
+    background-color: aqua;
+    border: solid 2px green;
+    float: left;
+    margin-left: 5px;
+}
+#Div-So-Luong{
+    margin-left: 2px;
+    display: block;
+    width: 30vw;
+    height: 30vw;
+    background-color: aqua;
+    border: solid 2px green;
+    float: left;
+}
+#btn-Tinh-Tien{
+    display: block;
+    float: right;
+    width: 37vw;
+    border: solid 1px black;
+    height: 10vw;
+    margin-right: 5px;
+    font-size: 3em;
+    font-weight: 700;
+}
+#Div-Ket-Qua{
+    margin-top: 20px;
+    width: 37vw;
+    height: 15vw;
+    background-color: antiquewhite;
+    float: right;
+}
+h3{
+    font-size: 5vw;
+}
+#Ket-Qua{
+    
+    
+}
+
+#btn-1,#btn-2,#btn-3,#btn-4,#btn-5,#btn-6{
+    font-size: 3em;
+    margin: 1vw;
+    float: left;
+    width: 8vw;
+    height: 8vw;
+}

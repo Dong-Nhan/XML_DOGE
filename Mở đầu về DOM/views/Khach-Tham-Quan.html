@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Khách tham quan</title>
+    <link rel="stylesheet" href="Css/Khach-Tham-Quan.css">
+    <link rel="stylesheet" href="Css/logo.css">
+</head>
+<body>
+    <!--banner-->
+    <div id='logo'>
+        <img id='img-logo' src="/Media/PET.png" alt="PET">
+    </div>
+    <!--Mat hàng-->
+    <div id=danh-sach-mat-hang>
+        <ul id='mat-hang'>
+            
+        </ul>
+        <script>
+            function HienThiNoiDung(xml){
+                result = xml.getElementsByTagName('Mat_hang');
+                for(var i = 0;i<result.length;i++){
+                    //Hình
+                    var src = '/Media/'+result[i].attributes.getNamedItem('Ma_so').nodeValue + '.png';
+                    var hinh = document.createElement('img');
+                    hinh.setAttribute('src',src);
+                    //Tên
+                    var ten = document.createElement('h3');
+                    ten.setAttribute('style','color: black; text-align:center');
+                    ten.innerHTML = result[i].attributes.getNamedItem('Ten').nodeValue;
+                    //Giá bán
+                    var gia_ban = document.createElement('h3');
+                    gia_ban.setAttribute('style','color: black; text-align:center')
+                    gia_ban.innerHTML = result[i].attributes.getNamedItem('Don_gia_Ban').nodeValue +'đ';
+
+                    //sản phẩm
+                    var san_pham = document.createElement('li');
+                    san_pham.appendChild(ten);
+                    san_pham.appendChild(hinh);
+                    san_pham.appendChild(gia_ban);
+                    san_pham.setAttribute('class','item');
+                    document.getElementById('mat-hang').appendChild(san_pham);
+                }
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    HienThiNoiDung( this.responseXML);
+                }
+            }
+            xhttp.open('GET','/data',true);
+            xhttp.send();
+        </script>
+    </div>
+</body>
+</html>

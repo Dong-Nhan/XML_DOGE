@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thu ngân xem</title>
+    <link rel="stylesheet" href="Css/logo.css">
+    <link rel="stylesheet" href="Css/Thu-Ngan-Xem.css">
+</head>
+<body>
+    <!--banner-->
+    <div id='logo'>
+        <img src="/Media/PET.png" alt="">
+    </div>
+    <!--Mat hàng-->
+    <div id=danh-sach-mat-hang>
+        <ul id='mat-hang'>
+            
+        </ul>
+        <script>
+            function HienThiNoiDung(xml){
+                result = xml.getElementsByTagName('Mat_hang');
+                for(var i = 0;i<result.length;i++){
+                    //Hình
+                    var src = '/Media/'+result[i].attributes.getNamedItem('Ma_so').nodeValue + '.png';
+                    var hinh = document.createElement('img');
+                    hinh.setAttribute('src',src);
+                    //Tên
+                    var ten = document.createElement('h3');
+                    ten.innerHTML = 'Tên mặt hàng: '+result[i].attributes.getNamedItem('Ten').nodeValue;
+                    //Giá bán
+                    var gia_ban = document.createElement('h3');
+                    gia_ban.innerHTML = 'Giá bán: '+result[i].attributes.getNamedItem('Don_gia_Ban').nodeValue +'đ';
+                    //Doanh thu
+                    var doanh_thu = document.createElement('h3');
+                    var tong_doanh_thu = 0;
+                    for(var j = 0;j<result[i].getElementsByTagName('Ban_hang').length;j++){
+                        tong_doanh_thu += parseInt(result[i].getElementsByTagName('Ban_hang')[j].attributes.getNamedItem('Tien').nodeValue);
+                    }
+                    doanh_thu.innerHTML = 'Doanh thu: '+tong_doanh_thu +'đ';
+                    //sản phẩm
+                    var san_pham = document.createElement('li');
+                    san_pham.appendChild(ten);
+                    san_pham.appendChild(hinh);
+                    san_pham.appendChild(gia_ban);
+                    san_pham.appendChild(doanh_thu);
+                    san_pham.setAttribute('class','item')
+                    document.getElementById('mat-hang').appendChild(san_pham);
+                }
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    HienThiNoiDung( this.responseXML);
+                }
+            }
+            xhttp.open('GET','/data',true);
+            xhttp.send();
+        </script>
+    </div>
+</body>
+</html>

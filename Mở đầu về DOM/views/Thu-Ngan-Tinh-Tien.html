@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thu ngân tính tiền</title>
+    <link rel="stylesheet" href="Css/logo.css">
+    <link rel="stylesheet" href="Css/Thu-Ngan-Tinh-Tien.css">
+</head>
+<body>
+    <!--banner-->
+    <div id='logo'>
+        <img  id='img-logo'src="/Media/PET.png" alt="">
+    </div>
+    <!--Khu vực tính tiền-->
+    <div id='Khu-vuc-tinh-tien'>
+        <div id='Div-Ma-San-Pham'>
+            <label for="Ma-San-Pham" style="font-size: 7vh; font-weight: 700; color:blueviolet">Chọn sản phẩm</label>
+            <select name="Ma-San-Pham" style="display: block;margin:auto;margin-top:1em; width: 10em; height: 5em;font-size:2em" id="Ma-San-Pham">
+
+            </select>
+        </div>
+        <div id='Div-So-Luong'>
+            <label for="So-Luong"style="font-size: 3em; font-weight: 700; color:blueviolet">Nhập số lượng</label>
+            <script>
+                function onchangeInput(){
+                    var num = document.getElementById('So-Luong');
+                    if(num.value <=0 ){
+                        num.value = 1;
+                        return;
+                    }
+                    if(num.value > 100){
+                        num.value = 100;
+                        return;
+                    }
+                }
+            </script>
+            <input name='So-Luong' onchange="onchangeInput();" onkeydown="onchangeInput();" style="display: block;margin:auto; width: 10em; height: 2em; font-size:2em" id='So-Luong' type="number" placeholder="Số lượng" value='1'>
+            <script>
+                function SetGiaTriInput(n){
+                    var temp = document.getElementById('So-Luong');
+                    temp.setAttribute('value',n);
+                }
+            </script>
+            <button id='btn-1' onclick="SetGiaTriInput(1);">1</button>
+            <button id='btn-2' onclick="SetGiaTriInput(2);">2</button>
+            <button id='btn-3' onclick="SetGiaTriInput(3);">3</button>
+            <button id='btn-4' onclick="SetGiaTriInput(4);">4</button>
+            <button id='btn-5' onclick="SetGiaTriInput(5);">5</button>
+            <button id='btn-6' onclick="SetGiaTriInput(6);">6</button>
+        </div>
+        <button onclick="TinhTien()" id='btn-Tinh-Tien'>Tính tiền</button>
+        <div id='Div-Ket-Qua'>
+            <h3>Tổng Tiền:</h3>
+            <h3 id='Ket-Qua'></h3>
+        </div>
+    </div>
+    <script>
+        var Du_Lieu = [];
+        function HienThiNoiDung(xml){
+            var select = document.getElementById('Ma-San-Pham');
+            var temp = xml.getElementsByTagName('Mat_hang');
+            for(var i = 0; i< temp.length;i++){
+                var option = document.createElement('option');
+                option.setAttribute('value',temp[i].attributes.getNamedItem('Ma_so').nodeValue);
+                option.innerHTML = temp[i].attributes.getNamedItem('Ten').nodeValue;
+                select.appendChild(option);
+                //Thêm dữ liệu vào
+                Du_Lieu.push({
+                    Ma:temp[i].attributes.getNamedItem('Ma_so').nodeValue,
+                    Gia_Ban:temp[i].attributes.getNamedItem('Don_gia_Ban').nodeValue
+                });
+            }
+        }
+        function TinhTien(){
+            var Ma = document.getElementById('Ma-San-Pham').value;
+            var So_Luong = parseInt(document.getElementById('So-Luong').value);
+            var Ket_Qua = document.getElementById('Ket-Qua');
+
+            for(var i = 0;i<Du_Lieu.length;i++){
+                if(Du_Lieu[i].Ma == Ma){
+                    var TongTien = So_Luong * Du_Lieu[i].Gia_Ban;
+                    Ket_Qua.innerHTML = TongTien +'đ';
+                    return;
+                }
+            }
+        }
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState ==4 && this.status == 200){
+                HienThiNoiDung(this.responseXML);
+            }
+        }
+        xhttp.open('GET','/data',true);
+        xhttp.send();
+    </script>
+</body>
+</html>
