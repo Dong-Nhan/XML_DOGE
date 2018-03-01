@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Khách tham quan</title>
+    <link rel="stylesheet" href="Khach-Tham-Quan.css">
+    <link rel="stylesheet" href="logo.css">
+</head>
+<body>
+    <!--banner-->
+    <div id='logo'>
+        <img id='img-logo' src="../Media/PET.png" alt="PET">
+        <div id="div-button"></div>
+    </div>
+    <!--Mat hàng-->
+    <div id='danh-sach-mat-hang'>
+    </div>
+</body>
+<script src="../3-Doi_tuong_va_Xu_ly/3B-Xu_ly_3L.js"></script>
+<script>
+
+    //*************** Biến dùng chung  ************
+    var Danh_sach_Mat_hang;
+    //*************** Biến Cố Khởi động  ************
+    document.body.onload = () => {
+        Danh_sach_Mat_hang = Doc_Danh_sach_Mat_hang();
+        var Th_Danh_sach_Mat_hang = Tao_Th_Danh_sach_Mat_hang(Danh_sach_Mat_hang);
+        document.getElementById('danh-sach-mat-hang').appendChild(Th_Danh_sach_Mat_hang);
+        var Th_Button = Tao_Th_Button(Danh_sach_Mat_hang);
+        document.getElementById('div-button').appendChild(Th_Button);
+    }
+
+    //*************** Biến Cố Yêu cầu Tra cứu  ************
+</script>
+</html>

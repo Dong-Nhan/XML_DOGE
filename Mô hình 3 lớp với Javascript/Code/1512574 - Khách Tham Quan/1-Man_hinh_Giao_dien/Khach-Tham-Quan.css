@@ -1,0 +1,43 @@
+#danh-sach-mat-hang{
+    padding-top: 35vh;
+    margin-left: 5vw;
+}
+#div-button{
+    position: relative;
+    top: -30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#div-button:last-child{
+    text-align: center;
+}
+button{
+    padding: 5px;
+    background-color: aqua;
+    color: black;
+}
+button:hover{
+    background-color: blue;
+    color: white;
+}
+.item{
+    margin: 0 2px 2px 2px;
+    display: block;
+    float: left;
+    width: 30vw;
+    min-width: 50px;
+    border: solid 1px;
+    background-color: beige;
+}
+ul img{
+    width: 10em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+p{
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+}
