@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Khách tham quan</title>
-    <link rel="stylesheet" href="Khach-Tham-Quan.css">
+    <link rel="stylesheet" href="Quan-Li.css">
     <link rel="stylesheet" href="logo.css">
 </head>
 <body>
@@ -13,6 +13,10 @@
     <div id='logo'>
         <img id='img-logo' src="../Media/PET.png" alt="PET">
         <div id="div-button"></div>
+    </div>
+    <!-- Tổng doanh thu-->
+    <div id="tong-doanh-thu">
+
     </div>
     <!--Mat hàng-->
     <div id='danh-sach-mat-hang'>
@@ -30,6 +34,8 @@
         document.getElementById('danh-sach-mat-hang').appendChild(Th_Danh_sach_Mat_hang);
         var Th_Button = Tao_Th_Button(Danh_sach_Mat_hang);
         document.getElementById('div-button').appendChild(Th_Button);
+        var Th_Doanh_Thu = Tao_Th_Doanh_Thu(Danh_sach_Mat_hang);
+        document.getElementById('tong-doanh-thu').appendChild(Th_Doanh_Thu);
     }
     //*************** Biến Cố Yêu cầu Tra cứu  ************
 </script>
