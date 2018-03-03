@@ -38,6 +38,7 @@ function LoadThongTin(Danh_sach){
       //Set focus vào ô nhập số lượng
       document.getElementById('So-Luong').focus();
       document.getElementById('So-Luong').select();
+      TinhTien(Danh_sach);
       return;
     }
   }
@@ -46,7 +47,11 @@ function LoadThongTin(Danh_sach){
 //Tính tiền
 function TinhTien(Danh_sach){
   var Ma = document.getElementById('Ma-San-Pham').value;
-  var So_Luong = parseInt(document.getElementById('So-Luong').value);
+  var So_Luong =document.getElementById('So-Luong').value;
+  if(So_Luong == ''){
+    document.getElementsByClassName('Tong-tien')[0].innerHTML='';
+    return;
+  }
   var Mat_Hang=Danh_sach.getElementsByTagName('Mat_hang');
   for(var i = 0; i<Mat_Hang.length;i++){
     if(Mat_Hang[i].getAttribute('Ma_so') == Ma){
@@ -61,10 +66,10 @@ function TinhTien(Danh_sach){
 //Giới hạn tối đa là 999
 function NhapSoLuong(Danh_sach){
   var So_Luong = document.getElementById('So-Luong');
-  if(So_Luong.value == ''){
-    So_Luong.value='0';
+  if(parseInt(So_Luong.value) == 0){
+    So_Luong.value='';
   }
-  if(So_Luong.value >999){
+  if(So_Luong.value > 999){
     So_Luong.value = parseInt(So_Luong.value/10);
   }
   TinhTien(Danh_sach);
