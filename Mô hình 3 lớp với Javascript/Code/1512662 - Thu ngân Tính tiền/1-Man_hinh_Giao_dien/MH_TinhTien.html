@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thu ngân Tính tiền</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="MH_TinhTien.css">
+</head>
+<body style="font-family:Arial, Helvetica, sans-serif;box-sizing:border-box;
+        margin:0px;padding:0px;overflow-x:hidden"
+        class="container-fluid">
+    
+    <div id="CUA_SO_LOGO">
+        <img class="img-logo" src="../Media/PET.png" alt="Nhà hàng PET">
+    </div>
+    <div id="CUA_SO_CHUC_NANG">
+        <div class="Tinh_tien">
+                <div class="Chon-san-pham">
+                    <label for="Ma-San-Pham" style="font-size: 7vh; font-weight: 700;">Chọn sản phẩm</label>
+                    <select name="Ma-San-Pham" style="display: block;margin:auto; width: 15em; height: 2em;font-size:2em" id="Ma-San-Pham" onchange='LoadThongTin(Danh_sach_Mat_hang)'>
+                    
+                    </select>
+                </div>
+                <div class="Nhap-so-luong">
+                    <label for="So-Luong"style="font-size: 3em; font-weight: 700">Nhập số lượng</label>
+                    <input name='So-Luong' style="display: block;margin:auto; width: 10em; height: 2em; font-size:2em" id='So-Luong' type="number" placeholder="Số lượng" value='0' onkeyup="NhapSoLuong(Danh_sach_Mat_hang)">
+                </div>
+            <div class="Hien-thi-san-pham">
+                <div class="Hinh"></div>
+                <div class="Noi-dung"></div>
+            </div>
+        </div>
+        <div class="Ket-qua">
+            <button onclick="">Kết quả</button>
+            <h1 class='Tong-tien'></h1>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="../3-Doi_tuong_va_Xu_ly/3B-Xu_ly_3L.js" ></script>
+<script>
+//*************** Biến dùng chung  ************
+var Danh_sach_Mat_hang;
+
+//*************** Biến Cố Khởi động  ************
+document.body.onload =() => {
+    Danh_sach_Mat_hang =Doc_Danh_sach_Mat_hang();
+    var Hien_Thi=[];
+    Hien_Thi=HienThiNoiDung(Danh_sach_Mat_hang);
+    var select = document.getElementById('Ma-San-Pham');
+    for(var i = 0;i<Hien_Thi.length;i++){
+        select.appendChild(Hien_Thi[i]);
+    }
+}
+
+//*************** Biến Cố Yêu cầu Tra cứu  ************
+ 
+</script> 

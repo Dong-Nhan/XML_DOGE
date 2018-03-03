@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#CUA_SO_LOGO{
+    background-color: blue;
+    height: 20vh;
+    position: fixed;
+    width: 100vw;
+    margin-top: 0px;
+}
+
+.img-logo{
+    height:20vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.Tinh_tien{
+    width: fit-content;
+    padding-top: 20vh;
+}
+
+.Chon-san-pham{
+    display: block;
+    width: 40vw;
+    height: 25vh;
+    background-color: rgb(232, 250, 255);
+    float: left;
+    margin-left: 5px;
+}
+.Nhap-so-luong{
+    display: block;
+    width: 30vw;
+    height: 25vh;
+    background-color: rgb(232, 250, 255);
+    float: left;
+}
+.Hien-thi-san-pham{
+    display: block;
+    width: 70vw;
+    height: 50vh;
+    background-color: rgb(232, 250, 255);
+    float: left;
+    margin-left: 5px;
+}
+.Ket-qua{
+    display: block;
+    width: 28vw;
+    height: 75vh;
+    background-color: rgb(232, 250, 255);
+    float: right;
+    margin-right: 5px;
+    margin-top: -25vh;
+    position: relative;
+}
+.Hinh{
+    display: block;
+    position: relative;
+    width: 30vw;
+    height: 50vh;
+    float: left;
+}
+.Hinh>img{
+    display: block;
+    position: absolute;
+    margin: auto;
+    width: 20vw;
+    height: 20vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.Noi-dung{
+    display: block;
+    float: left;
+    width: 40vw;
+    height: 50vh;
+}
+.Noi-dung>h3{
+    font-size: 5vh;
+}
+.Noi-dung b{
+    color: brown;
+    font-size: 7vh;
+}
+.Tong-tien{
+    text-align: center;
+    padding-top: 15vh;
+    color: brown;
+    font-size: 10vh;
+}
+.Ket-qua>button{
+    width: 28vw;
+    display: block;
+    font-size: 12vh;
+    color: rgb(255, 255, 255);
+    background-color: rgb(35, 255, 163);
+    border: solid 1px;
+    border-color: blue;
+    text-align: center;
+}
+.Ket-qua>button:hover{
+    background-color: rgb(26, 184, 118);
+}
