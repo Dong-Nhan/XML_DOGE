@@ -58,4 +58,4 @@ typings/
 .env
 
 # visual code
-.vs
+.vscode
