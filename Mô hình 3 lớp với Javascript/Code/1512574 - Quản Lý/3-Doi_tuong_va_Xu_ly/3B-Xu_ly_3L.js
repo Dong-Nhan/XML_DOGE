@@ -1,10 +1,14 @@
 //************ Xử lý Thể hiện ***************/
-function Tao_Th_Doanh_Thu(Du_lieu) {
+function Tao_Th_Doanh_Thu_Theo_Ma(Ma_so_Nhom_Mat_hang, Du_lieu) {
   var Th_Doanh_Thu = document.createElement("h1");
   var Tong_Doanh_Thu = 0;
+  var Ten_Nhom;
   var Danh_Sach_Mat_Hang = Du_lieu.getElementsByTagName("Mat_hang");
   for (var i = 0; i < Danh_Sach_Mat_Hang.length; i++) {
     var Mat_hang = Danh_Sach_Mat_Hang[i];
+    var Nhom_Mat_hang = Mat_hang.getElementsByTagName("Nhom_Mat_hang");
+    var Ma_so_Nhom = Nhom_Mat_hang[0].getAttribute("Ma_so");
+    var Ten_Nhom_temp = Nhom_Mat_hang[0].getAttribute("Ten");
     var Ten = Mat_hang.getAttribute("Ten");
     var Ma_so = Mat_hang.getAttribute("Ma_so");
     var Don_gia_Ban = Mat_hang.getAttribute("Don_gia_Ban");
@@ -13,12 +17,18 @@ function Tao_Th_Doanh_Thu(Du_lieu) {
     );
     var Ban_hang = Danh_sach_Ban_hang[0].getElementsByTagName("Ban_hang");
     var Doanh_Thu_Mat_Hang = 0;
-    for (var j = 0; j < Ban_hang.length; j++) {
-      Doanh_Thu_Mat_Hang += parseInt(Ban_hang[j].getAttribute("Tien"));
+    if (Ma_so_Nhom == Ma_so_Nhom_Mat_hang || Ma_so_Nhom_Mat_hang == "Tat_Ca") {
+      for (var j = 0; j < Ban_hang.length; j++) {
+        Doanh_Thu_Mat_Hang += parseInt(Ban_hang[j].getAttribute("Tien"));
+      }
+      Tong_Doanh_Thu += Doanh_Thu_Mat_Hang;
+      Ten_Nhom = Ten_Nhom_temp;
     }
-    Tong_Doanh_Thu += Doanh_Thu_Mat_Hang;
   }
-  Th_Doanh_Thu.innerHTML = `Tổng doanh thu: ${Tong_Doanh_Thu}đ`;
+  if (Ma_so_Nhom_Mat_hang != "Tat_Ca")
+    Th_Doanh_Thu.innerHTML = `Tổng doanh thu: ${Tong_Doanh_Thu}đ đối với ${Ten_Nhom}`;
+  else
+    Th_Doanh_Thu.innerHTML = `Tổng doanh thu: ${Tong_Doanh_Thu}đ`;
   return Th_Doanh_Thu;
 }
 function Tao_Th_Danh_sach_Mat_hang(Du_lieu) {
@@ -110,16 +120,7 @@ function Tao_Th_Button(Du_lieu) {
   return Th_Button;
 }
 
-//************** Xử lý Nghiệp vụ ***********
-function Tinh_Doanh_Thu(Don_Gia, So_Luong) {
-  return parseInt(Don_Gia) * parseInt(So_Luong);
-}
-
-function Loc_Mat_Hang(id, Ma_so_Mat_hang, Du_lieu) {
-  //Xóa hết dữ liệu cũ
-  var Danh_Sach_Moi = document.getElementById(id);
-  Danh_Sach_Moi.innerHTML = "";
-
+function Tao_Th_Danh_sach_Mat_hang_Theo_Ma(Ma_so_Mat_hang, Du_lieu) {
   //Add dữ liệu mới
   var Dia_chi_Media = "../Media";
   var Th_Danh_sach = document.createElement("ul");
@@ -178,7 +179,30 @@ function Loc_Mat_Hang(id, Ma_so_Mat_hang, Du_lieu) {
       Th_Danh_sach.appendChild(item);
     }
   }
-  Danh_Sach_Moi.appendChild(Th_Danh_sach);
+  return Th_Danh_sach;
+}
+
+//************** Xử lý Nghiệp vụ ***********
+function Tinh_Doanh_Thu(Don_Gia, So_Luong) {
+  return parseInt(Don_Gia) * parseInt(So_Luong);
+}
+
+function Loc_Mat_Hang(id, Ma_so_Nhom_Mat_hang, Du_lieu) {
+  //Xóa hết dữ liệu cũ
+  var Danh_Sach = document.getElementById(id);
+  Danh_Sach.innerHTML = "";
+
+  Th_Danh_sach_theo_ma = Tao_Th_Danh_sach_Mat_hang_Theo_Ma(
+    Ma_so_Nhom_Mat_hang,
+    Du_lieu
+  );
+  Danh_Sach.appendChild(Th_Danh_sach_theo_ma);
+
+  //Xóa hết tổng doanh thu và update lại
+  var Doanh_Thu = document.getElementById("tong-doanh-thu");
+  Doanh_Thu.innerHTML = "";
+  var Th_Doanh_Thu_Moi = Tao_Th_Doanh_Thu_Theo_Ma(Ma_so_Nhom_Mat_hang, Du_lieu);
+  Doanh_Thu.appendChild(Th_Doanh_Thu_Moi);
 }
 
 // ************** Xử lý Lưu trữ ***********
