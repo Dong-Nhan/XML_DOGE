@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial;
+    margin: 0;
+    overflow: auto;
+}
+
+/************************************************/
+#CUA_SO_PET {    
+    background: white;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#CUA_SO_PET div {
+    color: #634832;
+    margin: 0.1%;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+/**********************************************/
+#CUA_SO_MENU {
+    margin-bottom: 50px;
+}
+
+.Mat_hang {
+    overflow: hidden;
+    width: 200px;
+    height: 250px;
+    margin: 40px;
+    margin-right: 20px;
+    float: left;
+}
+
+.Hinh_anh {
+    width: 100%;
+    height: 80%;
+}
+
+.Thong_tin {
+    font-weight: bold;
+    color: #38220f;
+}
+
+/*********************************************/
+#CUA_SO_TRA_CUU {
+    background: rgb(230, 193, 115);
+    position: fixed;
+    height: 7vh;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+#Nhap_Tra_cuu {
+    margin: 0.5vh;
+    margin-left: 40px;
+    height: 6vh;
+    width: 20%;
+    float: left;
+    background: #dbc1ac;
+    font-weight: bold;
+}
+
+#Nut_Tra_cuu {
+    margin: 0.5vh;
+    margin-left: 20px;
+    height: 6vh;
+    float: left; 
+    background: #dbc1ac;
+    font-weight: bold;
+}
+
+#Th_Ket_qua_Tra_cuu {
+    margin: 0.5vh;
+    float: left;
+    font-weight: bold;
+    font-size: 2.5vh;
+}
+
+
