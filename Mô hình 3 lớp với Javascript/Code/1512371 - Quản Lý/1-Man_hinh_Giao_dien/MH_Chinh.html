@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi" >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="MH_chinh.css">
+    <title>Nhà hàng PET</title>
+</head>
+<body>
+
+    <div id="CUA_SO_PET">
+        <div>NHÀ HÀNG PET</div>
+    </div>
+    <div id="CUA_SO_MENU"></div>
+    <div id="CUA_SO_TRA_CUU">
+        <input id="Nhap_Tra_cuu" placeholder="Mã số mặt hàng" type="text">
+        <button id="Nut_Tra_cuu">Tra cứu</button>
+        <div id="Th_Ket_qua_Tra_cuu"></div>
+    </div>
+</body>
+</html>
+
+<script src="../3-Doi_tuong_va_Xu_ly/3B-Xu_ly_3L.js" ></script>
+<script>
+//*************** Biến dùng chung  ************
+var Danh_sach_Mat_hang;
+//*************** Biến Cố Khởi động  ************
+document.body.onload =() => {
+  Danh_sach_Mat_hang = Doc_Danh_sach_Mat_hang();
+  
+  var Th_Danh_sach_Mat_hang = Tao_Th_Danh_sach_Mat_hang(Danh_sach_Mat_hang);
+  CUA_SO_MENU.appendChild(Th_Danh_sach_Mat_hang);
+
+  var Doanh_thu_Nha_hang = Tinh_Doanh_thu_Nha_hang();
+  var Th_Doanh_thu_Nha_hang = Tao_Th_Doanh_thu_Nha_hang(Doanh_thu_Nha_hang);
+  CUA_SO_TRA_CUU.appendChild(Th_Doanh_thu_Nha_hang);
+
+}
+
+//*************** Biến Cố Yêu cầu Tra cứu  ************
+document.getElementById("Nut_Tra_cuu").onclick=() => {
+    var Ma_so_Tra_cuu = document.getElementById("Nhap_Tra_cuu").value;
+    var Ket_qua_Tra_cuu = Tra_cuu(Ma_so_Tra_cuu);
+    var Th_Ket_qua_Tra_cuu = Tao_Th_Ket_qua_Tra_cuu(Ket_qua_Tra_cuu);
+    CUA_SO_TRA_CUU.removeChild(document.getElementById("Th_Ket_qua_Tra_cuu")); //xóa kết quả tra cứu cũ
+    CUA_SO_TRA_CUU.appendChild(Th_Ket_qua_Tra_cuu);
+}
+</script>      
