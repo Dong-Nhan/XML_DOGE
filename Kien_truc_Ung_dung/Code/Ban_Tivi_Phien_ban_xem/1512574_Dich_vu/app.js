@@ -1,23 +1,26 @@
 var http = require("http");
 var fs = require("fs");
 
+var readXML = require('./model/readXML.js');
+
 //Khởi tạo server
 http
   .createServer(function(req, res) {
     if (req.method == "get" || req.method == "GET") {
       switch (req.url) {
         //Get /data-TV
-        case "/data-TV": {
-          fs.readFile(__dirname + "/data/Danh_sach_Tivi.xml", (err, data) => {
-            if (err) {
-              console.log(err);
-              res.writeHead(404);
-              res.end(err.message);
-              return;
-            }
-            res.writeHead(200);
-            res.end(data);
-          });
+        case "/data-Khach-va-Nhan-Vien": {
+          readXML.layDuLieuChoNhanVienVaKhach(req,res);
+          break;
+        }
+        case "/data-Quan-Li-Nhap-Hang":
+        {
+          readXML.layDuLieuChoQuanLiNhapHang(req,res);
+          break;
+        }
+        case "/data-Quan-Li-Ban-Hang":
+        {
+          readXML.layDuLieuChoQuanLiBanHang(req,res);
           break;
         }
 
