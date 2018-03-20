@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nhân viên Bán hàng</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="font-family:Arial; width: 100%; box-sizing: border-box;
+                margin:0px;padding:0px;"
+                class="container-fluid"
+                onload="Xu_ly_Khoi_dong()">
+    <div class="container" style="height: auto;width:1080px;">
+        <div id = "CUA_SO_PET" style="background-color:aqua;width:1060px;">
+            <div class="btn PET">
+                <div class="btn btn-outline-primary" style="color:blue;background-color:white;font-size:40px">
+                    CỬA HÀNG TIVI
+                    <img src="http://localhost:3000/PET.png" alt=""> 
+                </div>
+                <div class="btn Ung_dung" style="color:blue;font-size:30px;">
+                    Ứng dụng Nhân viên Bán hàng
+                </div>               
+            </div>
+        </div>
+        <div id="CUA_SO_CHUC_NANG" style="width:1060px;background-color:#5182a3; margin:10px 0px; padding:5px 5px;">
+            <div class="DANH_SACH_CHUC_NANG">
+                <div style="text-align:center;">
+                    <input id="Th_Ho_ten" spellcheck="no" type="text"
+                        autocomplete="off" placeholder="Họ tên"
+                        value=""   />
+                    <input id="Th_Ngay" spellcheck="no" type="date"
+                        autocomplete="off" placeholder="Ngày"
+                        value=""   />
+                    <input id="Th_Tivi" type="text" 
+                        spellcheck="no" placeholder="Tivi"
+                        autocomplete="off"
+                        value=""   />
+                </div>
+                <div style="padding-top:10px; text-align:center;">
+                    <input id="Th_Don_gia" type="number"  min="1"
+                        spellcheck="no" placeholder="Đơn giá"
+                        autocomplete="off"
+                        value=""   />
+                    <input id="Th_So_luong" type="number"  min="1"
+                        spellcheck="no" placeholder="Số lượng"
+                        autocomplete="off"
+                        value=""   />
+                    <input id="Th_Tien" type="number"  min="1"
+                        spellcheck="no" placeholder="Tổng tiền"
+                        autocomplete="off"
+                        value=""   />
+                </div>
+                <div style="padding-top:10px; text-align:center;">
+                    <div class="btn btn-danger" onclick="Xu_ly_Ban_hang()" 
+                    >Xác nhận Bán hàng</div>
+                </div>
+            </div>
+        </div>
+        <div id="CUA_SO_THONG_BAO" style="background-color:rgb(255, 255, 255);margin:10px 0px"  >
+
+        </div>
+        <div id="CUA_SO_KET_QUA" style="width:1060px;background-color:white;margin:10px 0px">
+            <div id="CUA_SO_DOANH_THU" style="margin-bottom:10px;background-color:grey;font-size:30px; text-align:center; visibility:hidden; color:white;">
+                Doanh thu: <span id="DOANH_THU"></span> vnđ
+            </div>
+            <div id="DANH_SACH_MAT_HANG"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+<script src="../3-Doi_tuong_va_Xu_ly/3B-Xu_ly_3L.js" ></script>
+<script>
+    var danh_sach_tivi = [];
+    var danh_sach_tivi_Xem = [];
+    //*************** Biến Cố Khởi động  ************
+    function Xu_ly_Khoi_dong(){
+        danh_sach_tivi = Doc_Danh_sach_Tivi();
+        danh_sach_tivi_Xem = danh_sach_tivi;
+
+        var chuoi_HTML = Tao_Chuoi_HTML_Danh_sach_Tivi(danh_sach_tivi_Xem)
+        DANH_SACH_MAT_HANG.innerHTML = chuoi_HTML;
+    }
+    
+    //*************** Biến Cố Yêu cầu Tra cứu  ************
+    function Xu_ly_Ban_hang(){
+        var chuoi_XML = document.createElement("Ban_hang");
+        chuoi_XML.setAttribute("Ngay", Th_Ngay.value);
+        chuoi_XML.setAttribute("Don_gia", Th_Don_gia.value);
+        chuoi_XML.setAttribute("So_luong",Th_So_luong.value);
+        chuoi_XML.setAttribute("Tien", Th_Tien.value);
+        var tivi = Th_Tivi.value;
+        
+        var doanh_thu = parseInt(Th_Tien.value);
+        if(DOANH_THU.innerHTML != "")
+        {
+            doanh_thu += parseInt(DOANH_THU.innerHTML);
+        }
+        else{
+            CUA_SO_DOANH_THU.style.visibility = "visible";
+        }
+        
+        DOANH_THU.innerHTML = doanh_thu; 
+    }
+</script>
