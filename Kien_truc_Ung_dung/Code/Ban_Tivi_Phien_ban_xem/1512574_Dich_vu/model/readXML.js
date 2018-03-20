@@ -17,20 +17,20 @@ module.exports = {
     fs.readFile(__dirname + "/../data/Danh_sach_Tivi.xml", (err, xml) => {
       if (err) {
         console.log(err);
-        res.writeHead(304);
+        res.setHeader("Access-Control-Allow-Origin", '*')
         return res.end();
       }
       xml2js.parseString(xml, (err, data) => {
         if (err) {
           console.log(err);
-          res.writeHead(304);
+          res.setHeader("Access-Control-Allow-Origin", '*')
           return res.end();
         }
         for (let i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
           delete data.Danh_sach_Tivi.Tivi[i].Danh_sach_Ban_hang;
           delete data.Danh_sach_Tivi.Tivi[i].Danh_sach_Nhap_hang;
         }
-        res.writeHead(200);
+        res.setHeader("Access-Control-Allow-Origin", '*')
         var builder = new xml2js.Builder();
         var xml = builder.buildObject(data);
         res.end(xml);
@@ -41,19 +41,19 @@ module.exports = {
     fs.readFile(__dirname + "/../data/Danh_sach_Tivi.xml", (err, xml) => {
       if (err) {
         console.log(err);
-        res.writeHead(304);
+        res.setHeader("Access-Control-Allow-Origin", '*')
         return res.end();
       }
       xml2js.parseString(xml, (err, data) => {
         if (err) {
           console.log(err);
-          res.writeHead(304);
+          res.setHeader("Access-Control-Allow-Origin", '*')
           return res.end();
         }
         for (let i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
           delete data.Danh_sach_Tivi.Tivi[i].Danh_sach_Ban_hang;
         }
-        res.writeHead(200);
+        res.setHeader("Access-Control-Allow-Origin", '*')
         var builder = new xml2js.Builder();
         var xml = builder.buildObject(data);
         res.end(xml);
@@ -64,19 +64,19 @@ module.exports = {
     fs.readFile(__dirname + "/../data/Danh_sach_Tivi.xml", (err, xml) => {
       if (err) {
         console.log(err);
-        res.writeHead(304);
+        res.setHeader("Access-Control-Allow-Origin", '*')
         return res.end();
       }
       xml2js.parseString(xml, (err, data) => {
         if (err) {
           console.log(err);
-          res.writeHead(304);
+          res.setHeader("Access-Control-Allow-Origin", '*')
           return res.end();
         }
         for (let i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
           delete data.Danh_sach_Tivi.Tivi[i].Danh_sach_Nhap_hang;
         }
-        res.writeHead(200);
+        res.setHeader("Access-Control-Allow-Origin", '*')
         var builder = new xml2js.Builder();
         var xml = builder.buildObject(data);
         res.end(xml);

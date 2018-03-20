@@ -30,11 +30,11 @@ http
           fs.readFile(__dirname + "/public/media" + req.url, (err, data) => {
             //Không tồn tại đường dẫn
             if (err) {
-              res.writeHead(404);
+              res.setHeader("Access-Control-Allow-Origin", '*')
               res.end("Can not get " + req.url);
               return;
             }
-            res.writeHead(200);
+            res.setHeader("Access-Control-Allow-Origin", '*')
             res.end(data);
           });
           break;
@@ -43,7 +43,7 @@ http
     if (req.method == "post" || req.method == "POST") {
       switch (req.url) {
         default:
-          res.writeHead("404");
+          res.setHeader("Access-Control-Allow-Origin", '*')
           res.end("Can not post " + req.url);
           break;
       }
