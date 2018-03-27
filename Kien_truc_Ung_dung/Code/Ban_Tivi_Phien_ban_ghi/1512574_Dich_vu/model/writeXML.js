@@ -35,7 +35,8 @@ module.exports = {
         return res.end("erorr");
       }
       //insert data
-      for (let i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
+      let i;
+      for (i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
         if (data.Danh_sach_Tivi.Tivi[i].$.Ma_so == MaTV) {
           //console.log(data.Danh_sach_Tivi.Tivi[i].Danh_sach_Nhap_hang[0]);
           data.Danh_sach_Tivi.Tivi[i].Danh_sach_Nhap_hang[0].Nhap_hang.push({
@@ -48,6 +49,10 @@ module.exports = {
           });
           break;
         }
+      }
+      //không tìm thấy sản phẩm
+      if(i == data.Danh_sach_Tivi.Tivi.length){
+        return res.end('erorr');
       }
       var builder = new xml2js.Builder();
       var xmlres = builder.buildObject(data);
@@ -92,7 +97,8 @@ module.exports = {
         return res.end("erorr");
       }
       //insert data
-      for (let i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
+      let i;
+      for (i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
         if (data.Danh_sach_Tivi.Tivi[i].$.Ma_so == MaTV) {
           //console.log(data.Danh_sach_Tivi.Tivi[i].Danh_sach_Nhap_hang[0]);
           data.Danh_sach_Tivi.Tivi[i].Danh_sach_Ban_hang[0].Ban_hang.push({
@@ -106,6 +112,11 @@ module.exports = {
           break;
         }
       }
+      //không tìm thấy sản phẩm
+      if(i == data.Danh_sach_Tivi.Tivi.length){
+        return res.end('erorr');
+      }
+      
       var builder = new xml2js.Builder();
       var xmlres = builder.buildObject(data);
       fs.writeFileSync(__dirname + "/../data/Danh_sach_Tivi.xml", xmlres, {
@@ -141,11 +152,16 @@ module.exports = {
         return res.end("erorr");
       }
       //insert data
-      for (let i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
+      let i;
+      for (i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
         if (data.Danh_sach_Tivi.Tivi[i].$.Ma_so == MaTV) {
             data.Danh_sach_Tivi.Tivi[i].$.Don_gia_Ban = DonGiaBan;
           break;
         }
+      }
+      //không tìm thấy sản phẩm
+      if(i == data.Danh_sach_Tivi.Tivi.length){
+        return res.end('erorr');
       }
       var builder = new xml2js.Builder();
       var xmlres = builder.buildObject(data);
@@ -182,11 +198,16 @@ module.exports = {
         return res.end("erorr");
       }
       //insert data
-      for (let i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
+      let i;
+      for (i = 0; i < data.Danh_sach_Tivi.Tivi.length; i++) {
         if (data.Danh_sach_Tivi.Tivi[i].$.Ma_so == MaTV) {
             data.Danh_sach_Tivi.Tivi[i].$.Don_gia_Nhap = DonGiaNhap;
           break;
         }
+      }
+      //không tìm thấy sản phẩm
+      if(i == data.Danh_sach_Tivi.Tivi.length){
+        return res.end('erorr');
       }
       var builder = new xml2js.Builder();
       var xmlres = builder.buildObject(data);

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Danh_sach_Tivi>
   <Tivi Ten="Smart Tivi Cong Samsung 49 inch" Ma_so="TIVI_1" Don_gia_Ban="22900000" Don_gia_Nhap="18000000" So_luong_Ton="25" Doanh_thu="0" Trang_thai_Con_hang="false">
     <Nhom_Tivi Ten="Samsung" Ma_so="SAMSUNG"/>
@@ -747,6 +748,7 @@
       <Ban_hang Ngay="2018-2-6" Don_gia="22900000" So_luong="2" Tien="45800000"/>
       <Ban_hang Ngay="2018-2-1" Don_gia="22900000" So_luong="2" Tien="45800000"/>
       <Ban_hang Ngay="2018-3-1" Don_gia="22900000" So_luong="2" Tien="45800000"/>
+      <Ban_hang Ngay="2018-3-24" Don_gia="12" So_luong="1" Tien="123"/>
     </Danh_sach_Ban_hang>
     <Danh_sach_Nhap_hang>
       <Nhap_hang Ngay="2017-5-4" Don_gia="18000000" So_luong="70" Tien="1603000000"/>
@@ -764,6 +766,7 @@
       <Nhap_hang Ngay="2018-1-1" Don_gia="18000000" So_luong="150" Tien="3435000000"/>
       <Nhap_hang Ngay="2018-1-5" Don_gia="18000000" So_luong="120" Tien="2748000000"/>
       <Nhap_hang Ngay="2018-1-1" Don_gia="18000000" So_luong="40" Tien="916000000"/>
+      <Nhap_hang Ngay="1/1/1" Don_gia="12" So_luong="1" Tien="123"/>
     </Danh_sach_Nhap_hang>
   </Tivi>
   <Tivi Ten="Internet Tivi Sony 40 inch" Ma_so="TIVI_10" Don_gia_Ban="9990000" Don_gia_Nhap="7990000" So_luong_Ton="20" Doanh_thu="0" Trang_thai_Con_hang="false">

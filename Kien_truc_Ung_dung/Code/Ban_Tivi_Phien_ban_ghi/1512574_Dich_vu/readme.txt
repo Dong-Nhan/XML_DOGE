@@ -9,5 +9,5 @@
 	http://localhost:3000/cap-nhat-don-gia-nhap?MaTV=TIVI_1&DonGiaNhap=12
 
 - Để cập nhật đơn giá bán TV thì get theo cú pháp:
-	http://localhost:3000/cap-nhat-don-gia-ban?MaTV=TIVI_1&DonGiaNhap=12
+	http://localhost:3000/cap-nhat-don-gia-ban?MaTV=TIVI_1&DonGiaBan=12
 

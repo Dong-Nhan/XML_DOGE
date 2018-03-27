@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <title>Khách tham quan</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid" style="background-color:aqua">
+        <div class="row" style="background-color:antiquewhite">
+            <div class="col-sm-12 col-12 col-md-4 col-sm-4">
+                <img src="http://localhost:3000/PET.png" alt="PET" style="width:200px">
+            </div>
+            <div class="col-12 col-sm-12 col-md-8 col-sm-8" style="display: inline-block;
+            vertical-align: middle;
+            float: none;">
+                <p style="height:100%; line-height:100px; font-size:30px; font-weight:bold;">Cửa hàng PET - Trang dành cho khách tham quan</p>
+            </div>
+        </div>
+        <div id="Danh_sach_San_pham">
+
+        </div>
+        <!--<ul class="list-unstyled row">
+            <li class="col-md-3">
+                <img src="http://localhost:3000/TIVI_1.png" style="width: 100%" alt="" srcset="">
+                <p>Tên: Smart Tivi Cong Samsung 49 inch</p>
+                <p>Giá: 22900000</p>
+                <p></p>
+            </li>
+        </ul>-->
+    </div>
+    <!-- Optional JavaScript -->
+    <script src="../3-Doi_tuong_va_Xu_ly/3B-Xu_ly_3L.js"></script>
+    <script>
+        //*************** Biến dùng chung  ************
+        var Danh_sach_San_Pham;
+        //*************** Biến Cố Khởi động  ************
+        document.body.onload = () => {
+            Danh_sach_San_pham = Doc_Danh_sach_San_pham();
+            var Th_Danh_sach_San_pham = Tao_Th_Danh_sach_San_pham(Danh_sach_San_pham);
+            document.getElementById('Danh_sach_San_pham').appendChild(Th_Danh_sach_San_pham);
+        }
+        //*************** Biến Cố Yêu cầu Tra cứu  ************
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
