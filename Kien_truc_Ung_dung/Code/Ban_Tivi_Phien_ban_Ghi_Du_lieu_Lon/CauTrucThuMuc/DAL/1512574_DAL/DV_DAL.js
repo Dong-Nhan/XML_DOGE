@@ -5,20 +5,6 @@ const DAL = require("./DAL.js");
 const fs = require("fs");
 const xml2js = require("xml2js");
 
-// Tag = {
-//   Danh_sach_Tivi: "Danh_sach_Tivi",
-//   Tivi: "Tivi",
-//   Nhom_Tivi: "Nhom_Tivi"
-// };
-
-// Atrib = {
-//   Ten: "Ten",
-//   Ma_so: "Ma_so",
-//   Don_gia_Ban: "Don_gia_Ban",
-//   So_luong_Ton: "So_luong_Ton",
-//   Trang_thai_Con_hang: "Trang_thai_Con_hang"
-// };
-
 //Đọc sẵn dữ liệu để cache
 let CacheXML = fs.readFileSync(__dirname + "/" + pathData).toString();
 let CacheXMLDOM;
