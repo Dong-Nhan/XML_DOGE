@@ -31,5 +31,5 @@ http.createServer((YeuCau, DapUng) =>{
  
 }).listen(3002, (err) =>{
     if(err) console.log("Khong the kich hoat dich vu");
-    else console.log("Server is listening on port 3002");
+    else console.log("Server dang chay o port 3002");
 })

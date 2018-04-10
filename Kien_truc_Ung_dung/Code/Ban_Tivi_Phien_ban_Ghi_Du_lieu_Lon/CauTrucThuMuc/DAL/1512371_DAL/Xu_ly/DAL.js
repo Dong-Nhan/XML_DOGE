@@ -12,6 +12,7 @@ var ChuoiDuLieu = fs.readFileSync(DuongDan + "Test.xml", "utf8");
 var DOMDuLieu = new DOMParser().parseFromString(ChuoiDuLieu, "text/xml");
 var Danh_sach_Tivi = DOMDuLieu.getElementsByTagName("Tivi");
 
+//xử lý với điều kiện tầng BUS đã kiểm tra tính đúng đắn của thông tin
 class DAL {
     Doc() {
         return ChuoiDuLieu;
@@ -24,19 +25,14 @@ class DAL {
             //cập nhật đơn giá bán
             case "Ban":
                 i = this.TimTiviTheoMa(MaTV);
-                if (i != -1) {
-                    Danh_sach_Tivi[i].setAttribute("Don_gia_Ban", DonGia);
-                } else return "";
+                Danh_sach_Tivi[i].setAttribute("Don_gia_Ban", DonGia);
                 break;
 
                 //cập nhật đơn giá nhập
             case "Nhap":
                 i = this.TimTiviTheoMa(MaTV);
-                if (i != -1) {
                     Danh_sach_Tivi[i].setAttribute("Don_gia_Nhap", DonGia);
-                } else return "";
                 break;
-
             default:
                 return "";
         }
@@ -51,43 +47,42 @@ class DAL {
 
     Them(Mode, Ngay, Tien, MaTV, SoLuong, DonGia) {
         let NodeTam;
-        let i, SoLuongTonMoi;
+        let i, SoLuongTonMoi, DoanhThuMoi;
         //cập nhật DOM
         switch (Mode) {
             //bán tivi theo phiếu bán
             case "Ban":
                 i = this.TimTiviTheoMa(MaTV);
-                if (i != -1) {
-                    let Danh_sach_Ban_hang = Danh_sach_Tivi[i].getElementsByTagName("Danh_sach_Ban_hang")[0];
-                    NodeTam = DOMDuLieu.createElement("Ban_hang");
-                    NodeTam.setAttribute("Ngay", Ngay);
-                    NodeTam.setAttribute("Don_gia", DonGia);
-                    NodeTam.setAttribute("So_luong", SoLuong);
-                    NodeTam.setAttribute("Tien", Tien);
+                let Danh_sach_Ban_hang = Danh_sach_Tivi[i].getElementsByTagName("Danh_sach_Ban_hang")[0];
+                NodeTam = DOMDuLieu.createElement("Ban_hang");
+                NodeTam.setAttribute("Ngay", Ngay);
+                NodeTam.setAttribute("Don_gia", DonGia);
+                NodeTam.setAttribute("So_luong", SoLuong);
+                NodeTam.setAttribute("Tien", Tien);
 
-                    Danh_sach_Ban_hang.appendChild(NodeTam);
-                    SoLuongTonMoi = parseInt(Danh_sach_Tivi[i].getAttribute("So_luong_Ton")) - parseInt(SoLuong);
-                    Danh_sach_Tivi[i].setAttribute("So_luong_Ton", SoLuongTonMoi);
-                } else return "";
+                Danh_sach_Ban_hang.appendChild(NodeTam);
+                SoLuongTonMoi = parseInt(Danh_sach_Tivi[i].getAttribute("So_luong_Ton")) - parseInt(SoLuong);
+                DoanhThuMoi = parseInt(Danh_sach_Tivi[i].getAttribute("Doanh_thu")) + parseInt(Tien);
+                Danh_sach_Tivi[i].setAttribute("So_luong_Ton", SoLuongTonMoi);
+                Danh_sach_Tivi[i].setAttribute("Doanh_thu", DoanhThuMoi);
                 break;
 
                 //nhập tivi theo phiếu nhập
             case "Nhap":
                 i = this.TimTiviTheoMa(MaTV);
-                if (i != -1) {
-                    let Danh_sach_Nhap_hang = Danh_sach_Tivi[i].getElementsByTagName("Danh_sach_Nhap_hang")[0];
-                    NodeTam = DOMDuLieu.createElement("Nhap_hang");
-                    NodeTam.setAttribute("Ngay", Ngay);
-                    NodeTam.setAttribute("Don_gia", DonGia);
-                    NodeTam.setAttribute("So_luong", SoLuong);
-                    NodeTam.setAttribute("Tien", Tien);
+                let Danh_sach_Nhap_hang = Danh_sach_Tivi[i].getElementsByTagName("Danh_sach_Nhap_hang")[0];
+                NodeTam = DOMDuLieu.createElement("Nhap_hang");
+                NodeTam.setAttribute("Ngay", Ngay);
+                NodeTam.setAttribute("Don_gia", DonGia);
+                NodeTam.setAttribute("So_luong", SoLuong);
+                NodeTam.setAttribute("Tien", Tien);
 
-                    Danh_sach_Nhap_hang.appendChild(NodeTam);
-                    SoLuongTonMoi = parseInt(Danh_sach_Tivi[i].getAttribute("So_luong_Ton")) + parseInt(SoLuong);
-                    Danh_sach_Tivi[i].setAttribute("So_luong_Ton", SoLuongTonMoi);
-                } else return "";
+                Danh_sach_Nhap_hang.appendChild(NodeTam);
+                SoLuongTonMoi = parseInt(Danh_sach_Tivi[i].getAttribute("So_luong_Ton")) + parseInt(SoLuong);
+                DoanhThuMoi = parseInt(Danh_sach_Tivi[i].getAttribute("Doanh_thu")) - parseInt(Tien);
+                Danh_sach_Tivi[i].setAttribute("So_luong_Ton", SoLuongTonMoi);
+                Danh_sach_Tivi[i].setAttribute("Doanh_thu", DoanhThuMoi);
                 break;
-
             default:
                 return "";
         }
