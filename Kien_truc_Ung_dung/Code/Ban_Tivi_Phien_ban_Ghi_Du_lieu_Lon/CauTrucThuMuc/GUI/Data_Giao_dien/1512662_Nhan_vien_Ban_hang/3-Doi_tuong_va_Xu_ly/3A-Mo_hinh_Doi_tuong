@@ -1,0 +1,5 @@
+****** Cấu trúc đối tượng ******
+Cua_hang : Ma_so, Ten   ****** Tổ chức ******
+Danh_sach_Tivi :
+    Tivi Ten, Ma_so, Don_gia_Ban, Don_gia_Nhap, So_luong_Ton, Doanh_thu, Trang_thai_Con_hang ****Đối tượng****
+        Nhom_Tivi Ten, Ma_so
