@@ -25,7 +25,7 @@ http.createServer((YeuCau, DapUng) =>{
             DapUng.end(XuLy.Them(queryObject.Mode, queryObject.Ngay, queryObject.Tien, queryObject.MaTV, queryObject.SoLuong, queryObject.DonGia))
         break;
         default:
-            console.log("Truy van khong hop le");
+            console.log("Truy van khong hop le: ", parsedUrl.pathname);
             DapUng.end();
     }
  
