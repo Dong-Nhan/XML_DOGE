@@ -140,7 +140,7 @@ http
               (err, xmlResult) => {
                 //Nếu như request lỗi thì trả về chuỗi false
                 if (err) {
-                  //console.log(err+'')
+                  console.log(err+'')
                   return res.end("false");
                 }
                 res.end("true");

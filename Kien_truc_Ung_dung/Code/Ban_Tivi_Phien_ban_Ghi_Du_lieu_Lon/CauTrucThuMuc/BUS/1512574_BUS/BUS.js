@@ -161,12 +161,15 @@ const LayThongTinTiViChoNVBan = XMLDOM => {
         `${Atrib.Ma_so}="${XMLDOM.Danh_sach_Tivi.Tivi[i].$.Ma_so}"` + " ";
       result +=
         `${Atrib.Don_gia_Nhap}="${
-          XMLDOM.Danh_sach_Tivi.Tivi[i].$.Don_gia_Nhap
+          XMLDOM.Danh_sach_Tivi.Tivi[i].$.Don_gia_Ban 
         }"` + " ";
       result +=
         `${Atrib.So_luong_Ton}="${
           XMLDOM.Danh_sach_Tivi.Tivi[i].$.So_luong_Ton
         }"` + " ";
+      result +=
+        `${Atrib.Doanh_thu}="${XMLDOM.Danh_sach_Tivi.Tivi[i].$.Doanh_thu}"` +
+        " ";
       //Đóng tag Tivi
       result += ">";
 
@@ -194,7 +197,7 @@ const LayThongTinTiViChoQLBan = XMLDOM => {
         `${Atrib.Ma_so}="${XMLDOM.Danh_sach_Tivi.Tivi[i].$.Ma_so}"` + " ";
       result +=
         `${Atrib.Don_gia_Nhap}="${
-          XMLDOM.Danh_sach_Tivi.Tivi[i].$.Don_gia_Nhap
+          XMLDOM.Danh_sach_Tivi.Tivi[i].$.Don_gia_Ban 
         }"` + " ";
       result +=
         `${Atrib.So_luong_Ton}="${
