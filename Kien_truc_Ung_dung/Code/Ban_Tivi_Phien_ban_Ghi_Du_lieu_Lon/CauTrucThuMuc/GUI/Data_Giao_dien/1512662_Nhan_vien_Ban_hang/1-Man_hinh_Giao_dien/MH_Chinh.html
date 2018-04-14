@@ -81,6 +81,7 @@
 <script>
     var danh_sach_tivi = [];
     var danh_sach_tivi_Xem = [];
+    var tivi_ban;
     //*************** Biến Cố Khởi động  ************
     function Xu_ly_Khoi_dong(){
         danh_sach_tivi = Doc_Danh_sach_Tivi();
@@ -92,6 +93,9 @@
     
     //*************** Biến Cố Yêu cầu Tra cứu  ************
     function Xu_ly_Tra_cuu( ){
+        if(CUA_SO_THONG_BAO.innerHTML != ""){
+            CUA_SO_THONG_BAO.innerHTML = "";
+        }
         // Nhập liệu
         var Chuoi_Tra_cuu=Th_Tivi.value
         if(Chuoi_Tra_cuu == ""){
@@ -101,6 +105,7 @@
         }
         // Xử lý Tão Kết quả 
         Danh_sach_Mat_hang_Xem=Tra_cuu_Mat_hang(Chuoi_Tra_cuu,danh_sach_tivi)
+        tivi_ban = Danh_sach_Mat_hang_Xem[0];
         // Kết xuất Kết quả 
         var Chuoi_HTML_Danh_sach_Mat_hang;
         if(Danh_sach_Mat_hang_Xem.length > 0){
@@ -126,7 +131,7 @@
             CUA_SO_THONG_BAO.innerHTML = "Lỗi nhập liệu! Mã sản phẩm không đúng!"
             return;
         }
-        var res =Tinh_toan_Ban_hang(); 
+        var res =Tinh_toan_Ban_hang(tivi_ban); 
         if(res == "false"){
             CUA_SO_THONG_BAO.innerHTML = "Lỗi nhập liệu!";
             CUA_SO_DOANH_THU.style.visibility = "hidden";

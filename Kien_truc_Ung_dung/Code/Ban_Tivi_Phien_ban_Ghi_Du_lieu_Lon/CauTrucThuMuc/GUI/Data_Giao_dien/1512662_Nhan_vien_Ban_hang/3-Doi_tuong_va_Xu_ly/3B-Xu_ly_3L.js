@@ -58,9 +58,9 @@ function Doc_Danh_sach_Tivi(){
 }
 
 /* ********* Xử lý tính toán bán hàng ********** */
-function Tinh_toan_Ban_hang(){
+function Tinh_toan_Ban_hang(tivi){
     //Kiểm tra còn đủ số lượng để bán ko
-    if( parseInt(so_luong_ton) < parseInt(Th_So_luong.value) || parseInt(Th_So_luong.value) <= 0){
+    if( parseInt(tivi.getAttribute("So_luong_Ton")) < parseInt(Th_So_luong.value) || parseInt(Th_So_luong.value) <= 0){
         return "false";
     }
     //Gửi yêu cầu về server

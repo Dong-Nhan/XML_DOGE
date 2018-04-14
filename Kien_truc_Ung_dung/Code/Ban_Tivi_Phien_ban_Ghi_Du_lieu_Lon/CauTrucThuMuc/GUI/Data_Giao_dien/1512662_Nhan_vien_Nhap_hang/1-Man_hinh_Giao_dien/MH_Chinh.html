@@ -84,6 +84,7 @@
         if(CUA_SO_THONG_BAO.innerHTML != ""){
             CUA_SO_THONG_BAO.innerHTML = "";
         }
+        //Lấy dữ liệu
         var Chuoi_Tra_cuu=Th_Tivi.value
         if(Chuoi_Tra_cuu == ""){
             Th_Don_gia.value = "";
@@ -91,6 +92,7 @@
             CUA_SO_KET_QUA.innerHTML = chuoi_HTML;
             return;
         }
+        //Lấy mặt hàng phù hợp với tra cứu
         Danh_sach_Mat_hang_Xem=Tra_cuu_Mat_hang(Chuoi_Tra_cuu,danh_sach_tivi_Xem)
         var Chuoi_HTML_Danh_sach_Mat_hang;
         if(Danh_sach_Mat_hang_Xem.length > 0){
