@@ -81,13 +81,17 @@
     }
     //*************** Biến Cố Yêu cầu Tra cứu  ************
     function Xu_ly_Tra_cuu( ){
+        if(CUA_SO_THONG_BAO.innerHTML != ""){
+            CUA_SO_THONG_BAO.innerHTML = "";
+        }
         var Chuoi_Tra_cuu=Th_Tivi.value
         if(Chuoi_Tra_cuu == ""){
+            Th_Don_gia.value = "";
             var chuoi_HTML = Tao_Chuoi_HTML_Danh_sach_Tivi(danh_sach_tivi_Xem)
             CUA_SO_KET_QUA.innerHTML = chuoi_HTML;
             return;
         }
-        Danh_sach_Mat_hang_Xem=Tra_cuu_Mat_hang(Chuoi_Tra_cuu,danh_sach_tivi)
+        Danh_sach_Mat_hang_Xem=Tra_cuu_Mat_hang(Chuoi_Tra_cuu,danh_sach_tivi_Xem)
         var Chuoi_HTML_Danh_sach_Mat_hang;
         if(Danh_sach_Mat_hang_Xem.length > 0){
             Chuoi_HTML_Danh_sach_Mat_hang = Tao_Chuoi_HTML_Danh_sach_Tivi(Danh_sach_Mat_hang_Xem);
@@ -113,7 +117,15 @@
             CUA_SO_THONG_BAO.innerHTML = "Lỗi nhập liệu!";
         }
         else if(res == "true"){
-            CUA_SO_THONG_BAO.innerHTML = "";
+            CUA_SO_THONG_BAO.innerHTML = "Nhập hàng hoàn tất!";
+            danh_sach_tivi_Xem = Cap_nhat(Th_Tivi.value,danh_sach_tivi_Xem);
+            var Chuoi_HTML_Danh_sach_Mat_hang = Tao_Chuoi_HTML_Danh_sach_Tivi(danh_sach_tivi_Xem);            
+            CUA_SO_KET_QUA.innerHTML=Chuoi_HTML_Danh_sach_Mat_hang;
+            Th_Tivi.value = "";
+            Th_Ngay.value ="";
+            Th_So_luong.value = "";
+            Th_Tien.value ="";
+            Th_Don_gia.value = "";
         }
     }
 </script>

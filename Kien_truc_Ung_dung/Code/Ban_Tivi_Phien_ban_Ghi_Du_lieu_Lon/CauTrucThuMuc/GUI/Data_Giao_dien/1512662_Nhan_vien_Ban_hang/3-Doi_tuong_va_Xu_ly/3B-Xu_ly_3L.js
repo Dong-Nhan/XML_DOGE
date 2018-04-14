@@ -6,7 +6,7 @@ function Tao_Chuoi_HTML_Danh_sach_Tivi(danh_sach){
     for(var i = 0; i < danh_sach.length;i++){
         var tivi = danh_sach[i];
         var ten = tivi.getAttribute("Ten");
-        var don_gia_nhap =tivi.getAttribute("Don_gia_Nhap");
+        var don_gia_nhap =tivi.getAttribute("Don_gia_Ban");
         var so_luong_ton = tivi.getAttribute("So_luong_Ton");
         var doanh_thu = tivi.getAttribute("Doanh_thu");
 
@@ -18,7 +18,7 @@ function Tao_Chuoi_HTML_Danh_sach_Tivi(danh_sach){
         var th_Thong_tin = document.createElement("div");
         th_Thong_tin.className="btn";
         th_Thong_tin.style.cssText = "text-align: left;";
-        th_Thong_tin.innerHTML = `${ten} <br/>Đơn giá Nhập: ${don_gia_nhap} <br/>Số lượng tồn: ${so_luong_ton}
+        th_Thong_tin.innerHTML = `${ten} <br/>Đơn giá Bán: ${don_gia_nhap} <br/>Số lượng tồn: ${so_luong_ton}
         <br/>Doanh thu: ${doanh_thu}`;
         var th_Mat_hang = document.createElement("div");
         th_Mat_hang.style.cssText = "margin-bottom: 10px; width:270px";
@@ -59,9 +59,33 @@ function Doc_Danh_sach_Tivi(){
 
 /* ********* Xử lý tính toán bán hàng ********** */
 function Tinh_toan_Ban_hang(){
+    //Kiểm tra còn đủ số lượng để bán ko
+    if( parseInt(so_luong_ton) < parseInt(Th_So_luong.value) || parseInt(Th_So_luong.value) <= 0){
+        return "false";
+    }
+    //Gửi yêu cầu về server
     var Xu_ly_HTTP=new XMLHttpRequest();
     var localhost = "http://localhost:3001/ban-tivi?Ngay=" + Th_Ngay.value + "&Tien=" + Th_Tien.value + "&MaTV="+Th_Tivi.value.toUpperCase()+"&SoLuong=" +Th_So_luong.value +"&DonGia="+ Th_Don_gia.value;
     Xu_ly_HTTP.open("GET",localhost,false);
     Xu_ly_HTTP.send();
     return Xu_ly_HTTP.responseText;
+}
+
+/* ********* Cập nhật sau khi bán ********** */
+function Cap_nhat(Chuoi_Tra_cuu, Danh_sach) {
+    Chuoi_Tra_cuu = Chuoi_Tra_cuu.toUpperCase();
+    var Danh_sach_Kq = [];
+    for (var i = 0; i < Danh_sach.length; i++) {
+        var tivi = Danh_sach[i];
+        var ma = tivi.getAttribute("Ma_so").toUpperCase();
+        if (ma == Chuoi_Tra_cuu){
+            var so_luong_ton = tivi.getAttribute("So_luong_Ton");
+            tivi.setAttribute("So_luong_Ton", parseInt(so_luong_ton) - parseInt(Th_So_luong.value));
+            var doanh_thu = tivi.getAttribute("Doanh_thu");
+            tivi.setAttribute("Doanh_thu", parseInt(doanh_thu) + parseInt(Th_Tien.value));
+        }
+        Danh_sach_Kq.push(tivi);
+    }
+  
+    return Danh_sach_Kq;
 }
