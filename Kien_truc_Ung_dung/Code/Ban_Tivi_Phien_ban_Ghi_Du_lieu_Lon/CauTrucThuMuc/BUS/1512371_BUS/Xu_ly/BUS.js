@@ -57,7 +57,7 @@ function CacheDuLieuChoKhach() {
         //xóa các thuộc tính không cần thiết
         for (let j = 0; j < Danh_sach_Tivi[i].attributes.length; j++) {
             let TenNode = Danh_sach_Tivi[i].attributes[j].nodeName;
-            if (TenNode != "Ten" && TenNode != "Don_gia_Ban" && TenNode != "Trang_thai_Con_hang") {
+            if (TenNode != "Ten" && TenNode != "Don_gia_Ban" && TenNode != "Trang_thai_Con_hang" && TenNode != "Ma_so") {
                 Danh_sach_Tivi[i].removeAttributeNode(Danh_sach_Tivi[i].attributes[j]);
                 j--;
             }
