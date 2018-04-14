@@ -17,10 +17,10 @@ http.createServer((YeuCau, DapUng) =>{
             DapUng.end(XuLy.LayThongTinTiviTheoNhom(queryObject.DoiTuong));
         break;
         case "/ban-tivi":
-            DapUng.end(XuLy.BanTivi(queryObject.Ngay, queryObject.MaTV, queryObject.Tien, queryObject.SoLuong, queryObject.DonGia));
+            DapUng.end(XuLy.BanTivi(queryObject.Ngay, queryObject.MaTV, queryObject.SoLuong, queryObject.DonGia, queryObject.Tien));
         break;
         case "/nhap-tivi":
-            DapUng.end(XuLy.NhapTivi(queryObject.Ngay, queryObject.MaTV, queryObject.Tien, queryObject.SoLuong, queryObject.DonGia));
+            DapUng.end(XuLy.NhapTivi(queryObject.Ngay, queryObject.MaTV, queryObject.SoLuong, queryObject.DonGia, queryObject.Tien));
         break;
         case "/cap-nhat-don-gia-ban":
             DapUng.end(XuLy.CapNhatDonGiaBan(queryObject.MaTV, queryObject.DonGia));
@@ -29,11 +29,11 @@ http.createServer((YeuCau, DapUng) =>{
             DapUng.end(XuLy.CapNhatDonGiaNhap(queryObject.MaTV, queryObject.DonGia));
         break;
         default:
-        console.log("Truy van khong hop le");
+        console.log("Truy van khong hop le: ", parsedUrl.pathname);
             DapUng.end();
     }
 
 }).listen(3001, (err)=>{
     if(err) console.log("Khong the kich hoat dich vu");
-    else console.log("Server dang chay o port 3001")
+    else console.log("Server dang chay o port 3001, dang cache du lieu...")
 })
