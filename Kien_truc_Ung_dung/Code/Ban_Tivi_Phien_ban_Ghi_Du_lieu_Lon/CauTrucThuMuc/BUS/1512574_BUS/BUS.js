@@ -60,6 +60,7 @@ const LayThongTinTiViChoKhach = XMLDOM => {
       //Mở tag Tivi
       result += `<${Tag.Tivi} `;
       //Thêm thuộc tính cho Tivi
+      result += `${Atrib.Ma_so}="${XMLDOM.Danh_sach_Tivi.Tivi[i].$.Ma_so}"` + " ";
       result += `${Atrib.Ten}="${XMLDOM.Danh_sach_Tivi.Tivi[i].$.Ten}"` + " ";
       result +=
         `${Atrib.Don_gia_Ban}="${
@@ -160,7 +161,7 @@ const LayThongTinTiViChoNVBan = XMLDOM => {
       result +=
         `${Atrib.Ma_so}="${XMLDOM.Danh_sach_Tivi.Tivi[i].$.Ma_so}"` + " ";
       result +=
-        `${Atrib.Don_gia_Nhap}="${
+        `${Atrib.Don_gia_Ban}="${
           XMLDOM.Danh_sach_Tivi.Tivi[i].$.Don_gia_Ban 
         }"` + " ";
       result +=
