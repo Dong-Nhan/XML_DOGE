@@ -5,7 +5,7 @@ var XuLy = require("../Xu_ly/BUS.js");
 http.createServer((YeuCau, DapUng) =>{
     var parsedUrl = url.parse(YeuCau.url, true);
     var queryObject = parsedUrl.query;
-
+	DapUng.setHeader("Access-Control-Allow-Origin", "*");
     switch (parsedUrl.pathname)
     {
         case "/lay-thong-tin-tivi":

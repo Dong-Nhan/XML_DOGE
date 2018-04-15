@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <title>Cửa hàng PET</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>QUẢN LÝ BÁN HÀNG</h1>
+        <h2 style="background: black; color: white">Danh sách Tivi</h1>
+        <div id="Danh_sach_San_pham" class="fluid-container" style="padding: 15px;">
+        </div>
+        <h2 style="background: black; color: white">Danh sách nhóm Tivi</h2>
+        <div class="fluid-container" style="padding: 15px;">
+                <table class="table table-bordered" id = "Danh_sach_Nhom_Tivi">
+                        <thead>
+                          <tr>
+                            <th>Tên</th>
+                            <th>Số lượng tồn</th>
+                            <th>Doanh thu</th>
+                          </tr>
+                        </thead>
+                        <tbody id="Table body">
+                        </tbody>
+                      </table>
+        </div>
+        
+    <!-- Optional JavaScript -->
+    <script src="../3-Doi_tuong_va_Xu_ly/3B-Xu_ly_3L.js"></script>
+    <script>
+        //*************** Biến dùng chung  ************
+        var Danh_sach_San_Pham;
+        var Danh_sach_Nhom_Tivi;
+        //*************** Biến Cố Khởi động  ************
+        document.body.onload = () => {
+            Danh_sach_San_pham = Doc_Danh_sach_San_pham();
+            Danh_sach_Nhom_Tivi = Doc_Danh_sach_Nhom_Tivi();
+            var Th_Danh_sach_San_pham = Tao_Th_Danh_sach_San_pham(Danh_sach_San_pham);
+            Tao_Th_Danh_sach_Nhom_Tivi(Danh_sach_Nhom_Tivi);
+            document.getElementById('Danh_sach_San_pham').appendChild(Th_Danh_sach_San_pham);
+        }
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
